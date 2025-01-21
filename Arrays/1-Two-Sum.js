@@ -3,19 +3,16 @@
  * @param {number} target
  * @return {number[]}
  */
-var twoSum = function (nums, target) {
 
-    let numToIndexMap = {};
+    var twoSum = function(nums, target) {
+    const pairIdx = {};
 
-    for (i = 0; i < nums.length; i++) {
-        let diff = target - nums[i];
-
-        if (numToIndexMap.hasOwnProperty(diff)) {
-            return [i, numToIndexMap[diff]];
+    for (let i = 0; i < nums.length; i++) {
+        const num = nums[i];
+        if (target - num in pairIdx) {
+            return [i, pairIdx[target - num]];
         }
-        numToIndexMap[nums[i]] = i;
-    }
-    return null;
-
-
+        pairIdx[num] = i;
+    }    
 };
+    
